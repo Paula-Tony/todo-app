@@ -1,0 +1,218 @@
+:root {
+  --main-clr: hsl(236, 33%, 92%);
+  --sec-clr: hsl(0, 0%, 98%);
+  --text-clr: black;
+  --task-border: hsl(233, 11%, 84%);
+}
+:root.dark {
+  --main-clr: hsl(235, 21%, 11%);
+  --sec-clr: hsl(235, 24%, 19%);
+  --text-clr: white;
+  --task-border: hsl(233, 14%, 35%);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+.checked-input {
+  display: none;
+}
+.checked-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 1px solid hsl(233, 11%, 84%);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.checked-input-label img {
+  width: 15px;
+  user-select: none;
+  display: none;
+}
+.checked-input:checked + .checked-input-label {
+  background-image: linear-gradient(to bottom right, #6fa6f9, #b65fec);
+}
+.checked-input:checked + .checked-input-label img {
+  display: block;
+  pointer-events: none;
+}
+.main {
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--main-clr);
+}
+.main .header-img {
+  height: 250px;
+  background-image: url(../images/bg-desktop-light.jpg);
+  background-size: cover;
+}
+.main .header-img.dark {
+  background-image: url(../images/bg-desktop-dark.jpg);
+}
+.app-container {
+  min-width: 60%;
+  min-height: calc(100vh - 80px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+}
+@media (max-width: 991px) {
+  .app-container {
+    min-width: 80%;
+  }
+}
+@media (max-width: 767px) {
+  .app-container {
+    min-width: 100%;
+  }
+}
+.app-container .app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.app-container .app-header .title {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: white;
+  user-select: none;
+}
+.app-container .app-header .theme-icon {
+  cursor: pointer;
+  user-select: none;
+}
+.app-container .create-task {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--sec-clr);
+  border-radius: 6px;
+  border: none;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+.app-container .create-task .task-input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  color: var(--text-clr);
+}
+.app-container .create-task .task-input:focus {
+  outline: none;
+}
+.app-container .create-task .task-input::placeholder {
+  color: hsl(236, 9%, 61%);
+}
+.app-container .tasks-container {
+  background-color: var(--sec-clr);
+  border-radius: 6px;
+}
+.app-container .tasks-container .tasks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.app-container .tasks-container .tasks .task {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--task-border);
+  cursor: grab;
+}
+.app-container .tasks-container .tasks .no-task {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 20px;
+  color: var(--text-clr);
+  border-bottom: 1px solid var(--task-border);
+}
+.app-container .tasks-container .tasks .task:hover .delete {
+  opacity: 1;
+}
+.app-container .tasks-container .tasks .task:hover .checked-input-label {
+  border-color: #6fa6f9 #b65fec #b65fec #6fa6f9;
+}
+.app-container .tasks-container .tasks .task .text {
+  margin: 0;
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+  color: var(--text-clr);
+}
+.app-container .tasks-container .checked-input:checked ~ .text {
+  text-decoration: line-through;
+  color: hsl(236, 9%, 61%);
+}
+.app-container .tasks-container .tasks .task .delete {
+  margin-left: auto;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.3s;
+}
+.app-container .tasks-container .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: hsl(236, 9%, 61%);
+  position: relative;
+}
+.app-container .tasks-container .footer .lefted-tasks {
+  user-select: none;
+}
+.app-container .tasks-container .footer .filters {
+  display: flex;
+  gap: 15px;
+}
+@media (max-width: 767px) {
+  .app-container .tasks-container .footer .filters {
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    background-color: var(--sec-clr);
+    border-radius: 6px;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+.app-container .tasks-container .footer .filters span {
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+  font-weight: 700;
+}
+.app-container .tasks-container .footer .filters span:hover:not(.show) {
+  color: black;
+}
+.app-container .tasks-container .footer .filters span.show {
+  color: #6fa6f9;
+}
+.app-container .tasks-container .footer .clear-completed {
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+}
+.app-container .tasks-container .footer .clear-completed:hover {
+  color: black;
+}
+.drag-and-drop {
+  color: hsl(236, 9%, 61%);
+  text-align: center;
+  margin-top: 120px;
+}
+.dragging {
+  opacity: 0;
+}

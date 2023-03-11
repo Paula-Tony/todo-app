@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="header-img"></div>
+      <div class="app-container">
+        <div class="app-header">
+          <h1 class="title">todo</h1>
+          <img class="theme-icon light" src="images/icon-moon.svg" alt="" />
+        </div>
+        <div class="create-task">
+          <input class="checked-input" id="checked-input" type="checkbox" />
+          <label class="checked-input-label" for="checked-input">
+            <img src="images/icon-check.svg" alt="" />
+          </label>
+          <input
+            class="task-input"
+            id="task-input"
+            type="text"
+            placeholder="Create a new todo..."
+          />
+        </div>
+        <div class="tasks-container">
+          <ul class="tasks">
+            <li class="no-task">No tasks available</li>
+          </ul>
+          <div class="footer">
+            <div class="lefted-tasks">
+              <span class="num">0</span>
+              items lefted
+            </div>
+            <div class="filters">
+              <span class="all show" data-filter="all">All</span>
+              <span class="active" data-filter="active">Active</span>
+              <span class="completed" data-filter="completed">Completed</span>
+            </div>
+            <span class="clear-completed">Clear Completed</span>
+          </div>
+        </div>
+        <div class="drag-and-drop">Drag and drop to reorder list</div>
+      </div>
+    </main>
+    <script src="js/main.js"></script>
+  </body>
+</html>
